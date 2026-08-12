@@ -1,0 +1,32 @@
+clip,frame,image_file,predicted_decision,predicted_detections,actual_objects,actual_decision
+IMG_5079,0,IMG_5079_frame0.jpg,path clear,"chair:0.75:512,714,744,995",,
+IMG_5079,15,IMG_5079_frame15.jpg,path clear,"chair:0.77:532,702,763,980;chair:0.60:733,653,938,1033",,
+IMG_5079,30,IMG_5079_frame30.jpg,path clear,"chair:0.80:497,679,728,960;chair:0.49:695,702,899,992",,
+IMG_5079,45,IMG_5079_frame45.jpg,path clear,"chair:0.74:441,643,681,941;chair:0.63:649,605,866,969",,
+IMG_5079,60,IMG_5079_frame60.jpg,path clear,"chair:0.73:405,642,655,948;chair:0.56:621,583,841,984;chair:0.51:329,636,768,1421",,
+IMG_5079,75,IMG_5079_frame75.jpg,path clear,"chair:0.81:390,632,647,959;chair:0.61:622,588,837,985",,
+IMG_5079,90,IMG_5079_frame90.jpg,path clear,"chair:0.82:391,618,659,969;chair:0.59:623,530,856,992",,
+IMG_5079,105,IMG_5079_frame105.jpg,path clear,"chair:0.77:382,617,661,995;chair:0.53:618,550,860,1005",,
+IMG_5079,120,IMG_5079_frame120.jpg,path clear,"chair:0.79:366,604,650,1009;chair:0.56:607,550,859,1015",,
+IMG_5079,135,IMG_5079_frame135.jpg,path clear,"chair:0.84:346,590,650,1020;chair:0.63:593,539,862,1033",,
+IMG_5079,150,IMG_5079_frame150.jpg,path clear,"chair:0.80:349,573,657,1022",,
+IMG_5079,165,IMG_5079_frame165.jpg,path clear,"chair:0.80:354,532,688,1023;chair:0.47:205,964,802,1665;chair:0.43:622,494,913,1006",,
+IMG_5079,180,IMG_5079_frame180.jpg,path clear,"chair:0.87:376,492,729,1014;chair:0.42:661,426,961,1015",chair;dining table,stop
+IMG_5079,195,IMG_5079_frame195.jpg,path clear,"chair:0.84:400,452,776,1027;chair:0.56:710,383,1029,982;chair:0.52:721,301,794,429",,
+IMG_5079,210,IMG_5079_frame210.jpg,stop,"chair:0.81:390,400,798,1036;dining table:0.50:242,958,997,1874;chair:0.45:734,245,816,387",chair;dining table,stop
+IMG_5079,225,IMG_5079_frame225.jpg,stop,"chair:0.86:356,358,800,1047;dining table:0.62:187,966,1002,1911;chair:0.46:744,193,822,335",,
+IMG_5079,240,IMG_5079_frame240.jpg,stop,"chair:0.84:343,340,819,1088;dining table:0.58:165,982,1031,1909;chair:0.43:752,160,839,308",chair;dining table,stop
+IMG_5079,255,IMG_5079_frame255.jpg,stop,"chair:0.90:367,324,796,1077;dining table:0.59:134,993,1025,1914;chair:0.40:721,134,830,488",,
+IMG_5079,270,IMG_5079_frame270.jpg,stop,"chair:0.78:351,304,797,1093;dining table:0.71:93,997,1025,1913;chair:0.53:741,114,827,265",chair;dining table,stop
+IMG_5079,285,IMG_5079_frame285.jpg,stop,"chair:0.88:308,300,767,1077;dining table:0.48:1,1037,969,1909;chair:0.43:683,207,1065,973",,
+IMG_5079,300,IMG_5079_frame300.jpg,path clear,"chair:0.86:285,312,748,1125",chair;dining table,stop
+IMG_5079,315,IMG_5079_frame315.jpg,path clear,"chair:0.90:270,333,755,1191",,
+IMG_5079,330,IMG_5079_frame330.jpg,path clear,"chair:0.93:264,375,768,1271",,
+IMG_5079,345,IMG_5079_frame345.jpg,path clear,"chair:0.93:244,426,767,1352;chair:0.45:708,190,817,558",,
+IMG_5079,360,IMG_5079_frame360.jpg,stop,"chair:0.95:200,464,759,1446;chair:0.54:748,354,994,661",chair;dining table,stop
+IMG_5079,375,IMG_5079_frame375.jpg,"obstacle left, move right","chair:0.95:123,512,724,1560",,
+IMG_5079,390,IMG_5079_frame390.jpg,"obstacle left, move right","chair:0.93:23,580,693,1702;chair:0.53:686,461,958,775;chair:0.41:630,306,870,753",,
+IMG_5079,405,IMG_5079_frame405.jpg,"obstacle left, move right","chair:0.92:4,623,663,1815",chair,stop
+IMG_5079,420,IMG_5079_frame420.jpg,"obstacle left, move right","chair:0.88:10,659,644,1884;chair:0.46:575,385,824,754",,
+IMG_5079,435,IMG_5079_frame435.jpg,"obstacle left, move right","chair:0.87:2,680,637,1910",,
+IMG_5079,450,IMG_5079_frame450.jpg,"obstacle left, move right","chair:0.88:0,709,612,1908",chair,stop
