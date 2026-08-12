@@ -64,6 +64,43 @@ GROUND_TRUTH = {
     ("IMG_5079", 360): ("chair;dining table", "stop"),
     ("IMG_5079", 405): ("chair", "stop"),
     ("IMG_5079", 450): ("chair", "stop"),
+
+    # IMG_5089: a longer, multi-room walkthrough - office chair near a
+    # kitchen island, a backpack sitting on a stool blocking the island
+    # path, then walking along a counter to a fridge at a corner turn,
+    # then a hallway ending at a CLOSED DOOR.
+    ("IMG_5089", 0):    ("chair", "path clear"),
+    ("IMG_5089", 45):   ("chair", "path clear"),
+    ("IMG_5089", 165):  ("backpack;chair", "stop"),
+    ("IMG_5089", 195):  ("backpack", "obstacle left, move right"),
+    ("IMG_5089", 270):  ("oven;refrigerator", "path clear"),
+    ("IMG_5089", 585):  ("refrigerator", "obstacle right, move left"),
+    ("IMG_5089", 600):  ("refrigerator", "obstacle left, move right"),
+    ("IMG_5089", 675):  ("", "path clear"),
+    # This is a deliberate, honest failure case, not a labeling mistake:
+    # a closed door is directly ahead, blocking the path completely. A
+    # human would clearly say "stop", but COCO has no "door" class, so
+    # nothing our pipeline tracks is even present in the frame and it
+    # predicts "path clear" instead. This is the exact "no door class"
+    # limitation from detector.py's comments, now showing up as a real
+    # scored miss instead of just a theoretical one - worth keeping in
+    # the numbers rather than excluding it, and worth citing directly in
+    # the report's limitations section.
+    ("IMG_5089", 1155): ("", "stop"),
+    ("IMG_5089", 1335): ("chair", "path clear"),
+
+    # IMG_5091: walking toward a kitchen island (chairs far ahead, so
+    # still clear), then turning into a living room where a couch is
+    # close on the right, then past a TV and the same untracked wooden
+    # shelf/stand seen in IMG_5077/5078 (no matching COCO class, same
+    # known gap, not a new bug).
+    ("IMG_5091", 0):   ("chair", "path clear"),
+    ("IMG_5091", 90):  ("chair;backpack", "path clear"),
+    ("IMG_5091", 165): ("chair", "path clear"),
+    ("IMG_5091", 375): ("couch", "obstacle right, move left"),
+    ("IMG_5091", 450): ("couch;tv", "obstacle right, move left"),
+    ("IMG_5091", 495): ("tv", "path clear"),
+    ("IMG_5091", 525): ("tv", "path clear"),
 }
 
 

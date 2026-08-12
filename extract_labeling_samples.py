@@ -29,7 +29,7 @@ import cv2
 # manual work.
 SAMPLE_EVERY_N = 15
 
-CLIPS = ["IMG_5077", "IMG_5078", "IMG_5079"]
+CLIPS = ["IMG_5077", "IMG_5078", "IMG_5079", "IMG_5089", "IMG_5091"]
 
 
 def extract_for_clip(clip_name):

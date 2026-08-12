@@ -22,18 +22,41 @@ from ultralytics import YOLO
 # "door" class, so we use a few large fixed objects (bench, refrigerator,
 # oven, sink) as stand-ins for door-sized obstacles. toilet/microwave/
 # laptop/vase/suitcase/book were added after Phase 3 testing to broaden
-# indoor coverage, on request, since the original 12 missed some common
-# household obstacles.
+# indoor coverage. bicycle/motorcycle/handbag/clock/cell phone were added
+# to fix a real bug: these are common real-world obstacles (a bicycle
+# leaning in a hallway is a very real trip hazard) that were simply
+# missing from the filter, so YOLO was detecting them fine but the
+# pipeline was throwing them away before distance/zones ever saw them.
 OBSTACLE_CLASSES = [
     "person", "chair", "couch", "dining table", "potted plant",
     "backpack", "bench", "refrigerator", "oven", "sink", "tv", "bed",
     "toilet", "microwave", "laptop", "vase", "suitcase", "book",
+    "bicycle", "motorcycle", "handbag", "clock", "cell phone",
 ]
 
 # Confidence threshold per class. Every class starts at the same value.
 # This is a dictionary so that later, if one class (like "backpack") turns
 # out to be noisy, we can raise its threshold without touching the others.
 DEFAULT_CONF_THRESHOLD = 0.4
+
+# YOLO/COCO benchmarks consistently show much lower average precision for
+# small, visually varied classes than for large, visually consistent ones
+# (this shows up in the official COCO per-class AP tables, not just our
+# own testing). "book", "handbag", "vase", "backpack", and "cell phone"
+# are textbook examples: small, thin, or highly varied in appearance, so
+# YOLO tends to produce more false positives on them at a low threshold.
+# "clock" is also small but visually distinctive (round, wall-mounted),
+# so it gets a smaller bump than the rest. We raise these classes'
+# thresholds instead of the global default, so the more reliable classes
+# (person, chair, couch, oven, etc.) aren't penalized for the noisy ones.
+CONF_THRESHOLD_OVERRIDES = {
+    "book": 0.55,
+    "handbag": 0.5,
+    "vase": 0.5,
+    "backpack": 0.5,
+    "cell phone": 0.5,
+    "clock": 0.45,
+}
 
 
 class Detection:
@@ -68,8 +91,13 @@ class Detector:
         self.classes = classes if classes is not None else OBSTACLE_CLASSES
 
         # Per-class confidence threshold, defaulting everything to the same
-        # value unless the caller overrides specific classes.
+        # value, then applying our known-noisy-class overrides, then
+        # applying anything the caller explicitly passed in (highest
+        # priority, e.g. for testing a different threshold on one class).
         self.conf_thresholds = {c: DEFAULT_CONF_THRESHOLD for c in self.classes}
+        self.conf_thresholds.update({
+            c: t for c, t in CONF_THRESHOLD_OVERRIDES.items() if c in self.classes
+        })
         if conf_thresholds:
             self.conf_thresholds.update(conf_thresholds)
 
